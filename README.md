@@ -1,5 +1,4 @@
-# uservice-dynconf
-[![CI](https://github.com/userver-framework/uservice-dynconf/actions/workflows/ci.yml/badge.svg)](https://github.com/userver-framework/uservice-dynconf/actions/workflows/ci.yml)
+# sdc
 
 The service to control [dynamic configs](https://userver-framework.github.io/dd/d2c/md_en_schemas_dynamic_configs.html) of the other userver-based services.
 
@@ -30,21 +29,22 @@ uservice-dynconf --config /etc/uservice-dynconf/config_vars.yaml
 ## HowTo configure other userver-based microservices to use uservice-dynconf
 
 In [file `static_configs.yaml`](https://github.com/userver-framework/service_template/blob/develop/configs/static_config.yaml.in#L22) of the microservice add the following lines to connect and retrieve configurations from the `uservice-dynconf`:
+
 ```yaml
-        dynamic-config-client:
-            # uservice-dynconf address
-            config-url: http://localhost:8083
-            # service name to send to uservice-dynconf
-            service-name: microservice-name
-            http-retries: 5
-            http-timeout: 20s
-        dynamic-config-client-updater:
-            config-settings: false
-            fallback-path: dynamic_config_fallback.json
-            full-update-interval: 1m
-            load-only-my-values: true
-            store-enabled: true
-            update-interval: 5s
+dynamic-config-client:
+  # uservice-dynconf address
+  config-url: http://localhost:8083
+  # service name to send to uservice-dynconf
+  service-name: microservice-name
+  http-retries: 5
+  http-timeout: 20s
+dynamic-config-client-updater:
+  config-settings: false
+  fallback-path: dynamic_config_fallback.json
+  full-update-interval: 1m
+  load-only-my-values: true
+  store-enabled: true
+  update-interval: 5s
 ```
 
 ## HTTP API
@@ -55,24 +55,24 @@ HTTP REST API of the uservice-dynconf is described in OpenAPI format in [file](h
 
 Makefile contains useful targets for development:
 
-* `make build-debug` - debug build of the service with all the assertions and sanitizers enabled
-* `make build-release` - release build of the service with LTO
-* `make test-debug` - does a `make build-debug` and runs all the tests on the result
-* `make test-release` - does a `make build-release` and runs all the tests on the result
-* `make service-start-debug` - builds the service in debug mode and starts it
-* `make service-start-release` - builds the service in release mode and starts it
-* `make` or `make all` - builds and runs all the tests in release and debug modes
-* `make format` - autoformat all the C++ and Python sources
-* `make clean-` - cleans the object files
-* `make dist-clean` - clean all, including the CMake cached configurations
-* `make install` - does a `make build-release` and runs install in directory set in environment `PREFIX`
-* `make install-debug` - does a `make build-debug` and runs install in directory set in environment `PREFIX`
-* `make docker-COMMAND` - run `make COMMAND` in docker environment
-* `make docker-build-debug` - debug build of the service with all the assertions and sanitizers enabled in docker environment
-* `make docker-test-debug` - does a `make build-debug` and runs all the tests on the result in docker environment
-* `make docker-start-service-release` - does a `make install-release` and runs service in docker environment
-* `make docker-start-service-debug` - does a `make install-debug` and runs service in docker environment
-* `make docker-clean-data` - stop docker containers and clean database data
+- `make build-debug` - debug build of the service with all the assertions and sanitizers enabled
+- `make build-release` - release build of the service with LTO
+- `make test-debug` - does a `make build-debug` and runs all the tests on the result
+- `make test-release` - does a `make build-release` and runs all the tests on the result
+- `make service-start-debug` - builds the service in debug mode and starts it
+- `make service-start-release` - builds the service in release mode and starts it
+- `make` or `make all` - builds and runs all the tests in release and debug modes
+- `make format` - autoformat all the C++ and Python sources
+- `make clean-` - cleans the object files
+- `make dist-clean` - clean all, including the CMake cached configurations
+- `make install` - does a `make build-release` and runs install in directory set in environment `PREFIX`
+- `make install-debug` - does a `make build-debug` and runs install in directory set in environment `PREFIX`
+- `make docker-COMMAND` - run `make COMMAND` in docker environment
+- `make docker-build-debug` - debug build of the service with all the assertions and sanitizers enabled in docker environment
+- `make docker-test-debug` - does a `make build-debug` and runs all the tests on the result in docker environment
+- `make docker-start-service-release` - does a `make install-release` and runs service in docker environment
+- `make docker-start-service-debug` - does a `make install-debug` and runs service in docker environment
+- `make docker-clean-data` - stop docker containers and clean database data
 
 Edit `Makefile.local` to change the default configuration and build options.
 
