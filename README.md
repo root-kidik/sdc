@@ -1,6 +1,6 @@
 # sdc
 
-The service to control [dynamic configs](https://userver-framework.github.io/dd/d2c/md_en_schemas_dynamic_configs.html) of the other userver-based services.
+The service to control [dynamic configs](https://userver.tech/de/d10/md_en_2schemas_2dynamic__configs.html) of the other userver-based services.
 
 Service using postgres db version 10+
 
