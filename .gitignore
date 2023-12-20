@@ -3,12 +3,10 @@ build*
 compile_commands.json
 .cache/
 .idea/
-.pgdata/
+.vscode/
 .cores/
 .ccache/
-cmake-build-debug/
+cmake-build-*
 Testing/
-configs/static_config.yaml
-!Makefile.local
-!third_party/
-!third_party/userver/
+.DS_Store
+Makefile.local
