@@ -1,6 +1,7 @@
 #pragma once
 
-namespace uservice_dynconf::sql {
+namespace uservice_dynconf::sql
+{
 
 inline constexpr std::string_view kSelectSettingsForCache = R"~(
 SELECT (service, config_name), config_value, updated_at
